@@ -11,25 +11,25 @@ SET PATH=%PATH%;C:\Python27\;C:\Python27\Scripts;C:\Program Files\CMake\bin;C:\P
 SET PARAMETERS=TARGET_OS=windows WITH_RA=0 TARGET_TRANSPORT=IP SECURED=1 WITH_TCP=1 BUILD_SAMPLE=ON LOGGING=0 TEST=0 RD_MODE=CLIENT ROUTING=EP WITH_UPSTREAM_LIBCOAP=1 MULTIPLE_OWNER=1 resource/csdk
 CD iotivity
 
-REM ECHO ********************************** BUILDING x86 Release **********************************
-REM call scons TARGET_ARCH=x86 RELEASE=1 %PARAMETERS%
-REM MD ..\..\Libs\octbstack\Windows\x86\
-REM COPY out\windows\x86\release\resource\csdk\octbstack.dll ..\..\Libs\octbstack\Windows\x86\ /Y
+ECHO ********************************** BUILDING x86 Release **********************************
+call scons TARGET_ARCH=x86 RELEASE=1 %PARAMETERS%
+MD ..\..\Libs\octbstack\Windows\x86\
+COPY out\windows\x86\release\resource\csdk\octbstack.dll ..\..\Libs\octbstack\Windows\x86\ /Y
 
-REM ECHO ********************************** BUILDING x64 Release **********************************
-REM call scons TARGET_ARCH=amd64 RELEASE=1 %PARAMETERS%
-REM MD ..\..\Libs\octbstack\Windows\x64\
-REM COPY out\windows\amd64\release\resource\csdk\octbstack.dll ..\..\Libs\octbstack\Windows\x64\ /Y
+ECHO ********************************** BUILDING x64 Release **********************************
+call scons TARGET_ARCH=amd64 RELEASE=1 %PARAMETERS%
+MD ..\..\Libs\octbstack\Windows\x64\
+COPY out\windows\amd64\release\resource\csdk\octbstack.dll ..\..\Libs\octbstack\Windows\x64\ /Y
 
-REM ECHO ********************************** BUILDING x86 Debug **********************************
-REM call scons TARGET_ARCH=x86 RELEASE=0 %PARAMETERS%
-REM MD ..\..\Libs\octbstack\Windows\x86-debug\
-REM COPY out\windows\x86\debug\resource\csdk\octbstack.dll ..\..\Libs\octbstack\Windows\x86-debug\ /Y
+ECHO ********************************** BUILDING x86 Debug **********************************
+call scons TARGET_ARCH=x86 RELEASE=0 %PARAMETERS%
+MD ..\..\Libs\octbstack\Windows\x86-debug\
+COPY out\windows\x86\debug\resource\csdk\octbstack.dll ..\..\Libs\octbstack\Windows\x86-debug\ /Y
 
-REM ECHO ********************************** BUILDING x64 Debug **********************************
-REM call scons TARGET_ARCH=amd64 RELEASE=0 %PARAMETERS%
-REM MD ..\..\Libs\octbstack\Windows\x64-debug\
-REM COPY out\windows\amd64\debug\resource\csdk\octbstack.dll ..\..\Libs\octbstack\Windows\x64-debug\ /Y
+ECHO ********************************** BUILDING x64 Debug **********************************
+call scons TARGET_ARCH=amd64 RELEASE=0 %PARAMETERS%
+MD ..\..\Libs\octbstack\Windows\x64-debug\
+COPY out\windows\amd64\debug\resource\csdk\octbstack.dll ..\..\Libs\octbstack\Windows\x64-debug\ /Y
 
 ECHO ********************************** BUILDING ARM Debug **********************************
 call scons TARGET_ARCH=arm RELEASE=0 %PARAMETERS%
