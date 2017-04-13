@@ -44,21 +44,32 @@ namespace ClientTestApp
                         //if (r.Uri == "/BinarySwitchResURI" || r.Uri == "/light/1")
                         {
                             var client = new IotivityDotNet.ResourceClient(e.Address, r.Uri);
-                            //Get all the properties from the resource
-                            var response = await client.GetAsync(type);
-                            var p = response.Payload as IotivityDotNet.RepPayload;
-                            while(p != null)
+                            try
                             {
-                                foreach(var item in p.Values)
-                                {
-                                    Console.WriteLine($"\t\t\t\t{item.Key} = {item.Value}");
-                                }
-                                p = p.Next;
-                            }
+                                //Get all the properties from the resource
+                                var response = await client.GetAsync(type);
 
-                            //Start observing the resource
-                            client.OnObserve += OnResourceObserved;
-                        }
+
+                                var p = response.Payload as IotivityDotNet.RepPayload;
+                                while (p != null)
+                                {
+                                    foreach (var item in p.Values)
+                                    {
+                                        Console.WriteLine($"\t\t\t\t{item.Key} = {item.Value}");
+                                    }
+                                    p = p.Next;
+                                }
+
+                                //Start observing the resource
+                                client.OnObserve += OnResourceObserved;
+                            }
+                            catch
+                            {
+                                /* TODO: This catches a OC_STACK_UNAUTHORIZED_REQ return value.  The program will continue to run with this catch,
+                                 * But this is not the way to handle it. 
+                                 */
+                            }
+                    }
                     }
                 }
             }

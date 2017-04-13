@@ -21,6 +21,11 @@ call scons TARGET_ARCH=amd64 RELEASE=1 %PARAMETERS%
 MD ..\..\Libs\octbstack\Windows\x64\
 COPY out\windows\amd64\release\resource\csdk\octbstack.dll ..\..\Libs\octbstack\Windows\x64\ /Y
 
+ECHO ********************************** BUILDING ARM Release **********************************
+call scons TARGET_ARCH=arm RELEASE=1 %PARAMETERS%
+MD ..\..\Libs\octbstack\Windows\arm\
+COPY out\windows\arm\release\resource\csdk\octbstack.dll ..\..\Libs\octbstack\Windows\arm\ /Y
+
 ECHO ********************************** BUILDING x86 Debug **********************************
 call scons TARGET_ARCH=x86 RELEASE=0 %PARAMETERS%
 MD ..\..\Libs\octbstack\Windows\x86-debug\
