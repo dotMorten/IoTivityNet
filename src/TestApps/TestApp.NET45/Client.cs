@@ -49,7 +49,6 @@ namespace ClientTestApp
                                 //Get all the properties from the resource
                                 var response = await client.GetAsync(type);
 
-
                                 var p = response.Payload as IotivityDotNet.RepPayload;
                                 while (p != null)
                                 {
@@ -59,17 +58,14 @@ namespace ClientTestApp
                                     }
                                     p = p.Next;
                                 }
-
-                                //Start observing the resource
-                                client.OnObserve += OnResourceObserved;
                             }
-                            catch
+                            catch(Exception ex)
                             {
-                                /* TODO: This catches a OC_STACK_UNAUTHORIZED_REQ return value.  The program will continue to run with this catch,
-                                 * But this is not the way to handle it. 
-                                 */
+                                Log.WriteLine("\t\t\t\t" + e.Address + e.Uri + " - " + ex.Message);
                             }
-                    }
+                            //Start observing the resource
+                            client.OnObserve += OnResourceObserved;
+                        }
                     }
                 }
             }

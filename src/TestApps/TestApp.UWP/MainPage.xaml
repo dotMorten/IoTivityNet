@@ -9,10 +9,10 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="20*"/>
-        </Grid.RowDefinitions>
-        <TextBox x:Name="logOutput" Grid.Row="1"
-		 AcceptsReturn="True" />
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="20*"/>
+    </Grid.RowDefinitions>
+    <TextBox x:Name="logOutput" Grid.Row="1"
+             AcceptsReturn="True" />
 	</Grid>
 </Page>
