@@ -16,6 +16,10 @@
       <Link>x86\octbstack.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="..\..\..\libs\octbstack\Windows\arm\octbstack.dll" Condition=" '$(IotivityDeployARM)' == 'true' ">
+      <Link>arm\octbstack.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup Condition=" '$(Configuration)' == 'Debug' ">
     <Content Include="..\..\..\libs\octbstack\Windows\x64-debug\octbstack.dll" Condition=" '$(IotivityDeployX64)' == 'true' ">
@@ -24,6 +28,10 @@
     </Content>
     <Content Include="..\..\..\libs\octbstack\Windows\x86-debug\octbstack.dll" Condition=" '$(IotivityDeployX86)' == 'true' ">
       <Link>x86\octbstack.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\libs\octbstack\Windows\arm-debug\octbstack.dll" Condition=" '$(IotivityDeployARM)' == 'true' ">
+      <Link>arm\octbstack.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

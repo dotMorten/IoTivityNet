@@ -44,18 +44,25 @@ namespace ClientTestApp
                         //if (r.Uri == "/BinarySwitchResURI" || r.Uri == "/light/1")
                         {
                             var client = new IotivityDotNet.ResourceClient(e.Address, r.Uri);
-                            //Get all the properties from the resource
-                            var response = await client.GetAsync(type);
-                            var p = response.Payload as IotivityDotNet.RepPayload;
-                            while(p != null)
+                            try
                             {
-                                foreach(var item in p.Values)
-                                {
-                                    Console.WriteLine($"\t\t\t\t{item.Key} = {item.Value}");
-                                }
-                                p = p.Next;
-                            }
+                                //Get all the properties from the resource
+                                var response = await client.GetAsync(type);
 
+                                var p = response.Payload as IotivityDotNet.RepPayload;
+                                while (p != null)
+                                {
+                                    foreach (var item in p.Values)
+                                    {
+                                        Console.WriteLine($"\t\t\t\t{item.Key} = {item.Value}");
+                                    }
+                                    p = p.Next;
+                                }
+                            }
+                            catch(Exception ex)
+                            {
+                                Log.WriteLine("\t\t\t\t" + e.Address + e.Uri + " - " + ex.Message);
+                            }
                             //Start observing the resource
                             client.OnObserve += OnResourceObserved;
                         }

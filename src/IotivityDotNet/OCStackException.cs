@@ -19,7 +19,7 @@ namespace IotivityDotNet
             return message + " (" + result.ToString() + ")";
         }
 
-        [System.Diagnostics.DebuggerHiddenAttribute]
+//        [System.Diagnostics.DebuggerHiddenAttribute]
         internal static void ThrowIfError(OCStackResult result, string message = null)
         {
             if (result == OCStackResult.OC_STACK_OK)
